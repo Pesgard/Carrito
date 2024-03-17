@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrito</title>
+    <!-- Enlace a la biblioteca de iconos Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- Enlace a la hoja de estilos personalizada -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Barra de navegación -->
+    <div class="navbar">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="/img/logo.jpg" width="30" />
+      </div>
+
+      <!-- Contenedor para el inicio de sesión -->
+      <div class="login-container">
+        <!-- Texto "No tienes cuenta?" -->
+        <div class="have-account">No tienes cuenta?</div>
+        <!-- Botón de registro -->
+        <a href="/registro.html" class="login-btn">Regístrate</a>
+      </div>
+    </div>
+
+    <!-- Contenedor del formulario de inicio de sesión -->
+    <div class="form-container">
+        <!-- Encabezado del formulario -->
+        <div class="form-header">
+            <h2>Iniciar Sesión</h2>
+            <p>Ingresa los datos de tu cuenta para ingresar</p>
+        </div>
+      <form>
+        <!-- Campo de entrada para el correo electrónico -->
+        <div class="form-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Correo Electrónico"
+          />
+        </div>
+        <!-- Campo de entrada para la contraseña -->
+        <div class="form-group">
+          <div class="password-wrapper" id="input-password">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Contraseña"
+            />
+            <!-- Icono de ojo para alternar la visibilidad de la contraseña -->
+            <span class="eye-icon" onclick="togglePassword()">
+              <i class="fas fa-eye-slash"></i>
+            </span>
+          </div>
+        </div>
+        <!-- Botón para enviar el formulario de inicio de sesión -->
+        <div class="form-group">
+          <input type="submit" value="Iniciar Sesión" />
+        </div>
+      </form>
+    </div>
+
+    <!-- Script para la funcionalidad de alternar la visibilidad de la contraseña -->
+    <script src="/js/script.js"></script>
+  </body>
+</html>

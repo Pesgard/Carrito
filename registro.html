@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrito</title>
+    <!-- Incluye la biblioteca Font Awesome para los iconos -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- Enlaza tu hoja de estilos personalizada -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Barra de navegación -->
+    <div class="navbar">
+      <!-- Logo -->
+      <div class="logo">
+        <!-- Considera agregar un texto alternativo al logo para accesibilidad -->
+        <img src="/img/logo.jpg" width="30" alt="Logo" />
+      </div>
+
+      <!-- Contenedor de inicio de sesión -->
+      <div class="login-container">
+        <!-- Texto "Tienes cuenta?" -->
+        <div class="have-account">Tienes cuenta?</div>
+        <!-- Botón de inicio de sesión -->
+        <a href="/inicio.html" class="login-btn">Iniciar Sesión</a>
+      </div>
+    </div>
+
+    <!-- Contenedor del formulario de registro -->
+    <div class="form-container">
+      <!-- Encabezado del formulario -->
+      <div class="form-header">
+        <h2>Regístrate</h2>
+        <p>Ingresa tus datos</p>
+      </div>
+      <form>
+        <!-- Grupo de entrada para nombres y apellidos -->
+        <div class="form-group name-inputs">
+          <div>
+            <!-- Campo de entrada para nombres -->
+            <input
+              type="text"
+              id="first-name"
+              name="first-name"
+              placeholder="Nombres"
+            />
+          </div>
+          <div>
+            <!-- Campo de entrada para apellidos -->
+            <input
+              type="text"
+              id="last-name"
+              name="last-name"
+              placeholder="Apellido"
+            />
+          </div>
+        </div>
+        <!-- Campo de entrada para correo electrónico -->
+        <div class="form-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Correo Electrónico"
+          />
+        </div>
+        <!-- Campo de entrada para contraseña -->
+        <div class="form-group">
+          <div class="password-wrapper" id="input-password">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Contraseña"
+            />
+            <!-- Icono de ojo para alternar la visibilidad de la contraseña -->
+            <span class="eye-icon" onclick="togglePassword()">
+              <i class="fas fa-eye-slash"></i>
+            </span>
+          </div>
+        </div>
+        <!-- Botón para enviar el formulario de registro -->
+        <div class="form-group">
+          <input type="submit" value="Registrar" />
+        </div>
+      </form>
+    </div>
+
+    <!-- Script para la funcionalidad de alternar la visibilidad de la contraseña -->
+    <script src="/js/script.js"></script>
+  </body>
+</html>
