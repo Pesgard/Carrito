@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carrito</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap"
+      rel="stylesheet"
+    />
     <!-- Enlace a la biblioteca de iconos Font Awesome -->
     <link
       rel="stylesheet"
@@ -25,17 +31,17 @@
         <!-- Texto "No tienes cuenta?" -->
         <div class="have-account">No tienes cuenta?</div>
         <!-- Botón de registro -->
-        <a href="/registro.html" class="login-btn">Regístrate</a>
+        <a href="/registro" class="login-btn">Regístrate</a>
       </div>
     </div>
 
     <!-- Contenedor del formulario de inicio de sesión -->
     <div class="form-container">
-        <!-- Encabezado del formulario -->
-        <div class="form-header">
-            <h2>Iniciar Sesión</h2>
-            <p>Ingresa los datos de tu cuenta para ingresar</p>
-        </div>
+      <!-- Encabezado del formulario -->
+      <div class="form-header">
+        <h2>Iniciar Sesión</h2>
+        <p class="zen-kaku-gothic-antique-regular">Ingresa los datos de tu cuenta para ingresar</p>
+      </div>
       <form>
         <!-- Campo de entrada para el correo electrónico -->
         <div class="form-group">

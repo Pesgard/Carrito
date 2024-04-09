@@ -1,0 +1,72 @@
+/* Estilos para la tarjeta de producto */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  width: 255px; /* Ancho de la tarjeta */
+  height: 230px; /* Altura de la tarjeta */
+  margin: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombras para una leve elevación */
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column; /* Cambio a disposición en columna */
+  justify-content: space-between;
+  align-items: flex-start; /* Alinea el contenido al inicio */
+  margin-top: auto; /* Mueve el contenido al final de la tarjeta */
+}
+
+.product-name,
+.product-price {
+  width: 100%; /* Extiende los elementos a lo ancho de la tarjeta */
+  background: white;
+  padding: 4px; /* Agregar relleno alrededor del texto */
+}
+
+.product-name {
+  font-family: 'Poppins', sans-serif; /* Fuente Poppins */
+  font-weight: 500; /* Medium */
+  font-size: 16px; /* Tamaño 16 */
+  color: #1D293F; /* Color #1D293F */
+  text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.product-price {
+  font-family: 'Roboto', sans-serif; /* Fuente Roboto */
+  font-size: 20px; /* Tamaño 20 */
+  color: #56B280; /* Color #56B280 */
+  text-align: right; /* Alinea el texto a la derecha */
+}
+
+/* Estilos para la sección de productos */
+.product-section {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tarjetas de productos se envuelvan en múltiples líneas */
+  justify-content: center; /* Distribuye el espacio entre las tarjetas */
+}
+
+/* Estilos para el título y el subtítulo de la sección de productos */
+.section-header {  
+  text-align: center; /* Alinea el texto al centro */
+  margin-bottom: 40px; /* Espacio entre el encabezado y las tarjetas de productos */
+  margin-top: 5%;
+}
+
+.section-header h2 {
+  font-family: 'Poppins', sans-serif; /* Fuente Poppins */
+  font-weight: 500; /* Medium */
+  font-size: 40px; /* Tamaño 40 */
+  color: #0B254B; /* Color #0B254B */
+  margin-bottom: 5px; /* Espacio entre el título y el subtítulo */
+}
+
+.section-header p {
+  font-family: 'Poppins', sans-serif; /* Fuente Poppins */
+  font-size: 15px; /* Tamaño 15 */
+  color: #5E6E89; /* Color #5E6E89 */
+}

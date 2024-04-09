@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Estilos de la barra de navegación */
@@ -15,6 +16,14 @@
     color: #424242;
     padding: 10px 20px;
 }
+
+/* Estilos CSS para la fuente Zen Kaku Gothic Antique */
+.zen-kaku-gothic-antique-regular {
+    font-family: "Zen Kaku Gothic Antique", sans-serif;
+    font-weight: 400;
+    font-size: smaller;
+  }
+  
 
 /* Estilos del logo */
 .navbar .logo {

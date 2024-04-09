@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito</title>
     <!-- Incluye la biblioteca Font Awesome para los iconos -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Enlaza tu hoja de estilos personalizada -->
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Enlace a la fuente Zen Kaku Gothic Antique -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap" rel="stylesheet">
+</head>
   <body>
     <!-- Barra de navegación -->
     <div class="navbar">
@@ -26,7 +27,7 @@
         <!-- Texto "Tienes cuenta?" -->
         <div class="have-account">Tienes cuenta?</div>
         <!-- Botón de inicio de sesión -->
-        <a href="/inicio.html" class="login-btn">Iniciar Sesión</a>
+        <a href="/inicio" class="login-btn">Iniciar Sesión</a>
       </div>
     </div>
 
@@ -35,7 +36,7 @@
       <!-- Encabezado del formulario -->
       <div class="form-header">
         <h2>Regístrate</h2>
-        <p>Ingresa tus datos</p>
+        <p class="zen-kaku-gothic-antique-regular">Ingresa tus datos</p>
       </div>
       <form>
         <!-- Grupo de entrada para nombres y apellidos -->
