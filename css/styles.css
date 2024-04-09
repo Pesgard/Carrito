@@ -1,130 +1,129 @@
 /* Resetear márgenes y rellenos predeterminados */
 * {
-    background-color: #F1F4FE;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  background-color: #f1f4fe;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Estilos de la barra de navegación */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #F1F4FE;
-    color: #424242;
-    padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f1f4fe;
+  color: #424242;
+  padding: 10px 20px;
 }
 
 /* Estilos CSS para la fuente Zen Kaku Gothic Antique */
 .zen-kaku-gothic-antique-regular {
-    font-family: "Zen Kaku Gothic Antique", sans-serif;
-    font-weight: 400;
-    font-size: smaller;
-  }
-  
+  font-family: "Zen Kaku Gothic Antique", sans-serif;
+  font-weight: 400;
+  font-size: smaller;
+}
 
 /* Estilos del logo */
 .navbar .logo {
-    font-size: 24px;
-    font-weight: bold;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 /* Contenedor para texto y botón de inicio de sesión */
 .navbar .login-container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 /* Estilos del botón de inicio de sesión */
 .navbar .login-btn {
-    background-color: transparent; /* Eliminar color de fondo */
-    color: #212121; /* Establecer color de texto */
-    border: 1px solid #212121; /* Agregar borde */
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    margin-left: 10px; /* Agregar margen entre texto y botón */
+  background-color: transparent; /* Eliminar color de fondo */
+  color: #212121; /* Establecer color de texto */
+  border: 1px solid #212121; /* Agregar borde */
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 10px; /* Agregar margen entre texto y botón */
 }
 
 /* Estilos del texto "Tienes cuenta?" */
 .navbar .have-account {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 /* Estilos del formulario */
 .form-container {
-    margin: 20px auto;
-    max-width: 400px;
+  margin: 20px auto;
+  max-width: 400px;
 }
 
 /* Grupo de formulario */
 .form-group {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 /* Encabezado del formulario */
 .form-header {
-    text-align: center; /* Centrar el contenido */
-    margin-bottom: 20px; /* Agregar espacio entre el encabezado y el formulario */
+  text-align: center; /* Centrar el contenido */
+  margin-bottom: 20px; /* Agregar espacio entre el encabezado y el formulario */
 }
 
 /* Estilo para h2 */
 .form-header h2 {
-    margin-bottom: 10px; /* Agregar espacio entre h2 y p */
+  margin-bottom: 10px; /* Agregar espacio entre h2 y p */
 }
 
 /* Estilo para p */
 .form-header p {
-    margin-bottom: 0; /* Eliminar margen predeterminado */
-    color: #666; /* Opcional: ajustar color del texto */
-    font-size: 14px; /* Opcional: ajustar tamaño de la fuente */
-    font-weight: bold; /* Opcional: ajustar peso de la fuente */
-    text-transform: uppercase; /* Opcional: transformar texto a mayúsculas */
-    letter-spacing: 1px; /* Opcional: ajustar espaciado entre letras */
-    line-height: 1.5; /* Opcional: ajustar altura de línea */
+  margin-bottom: 0; /* Eliminar margen predeterminado */
+  color: #666; /* Opcional: ajustar color del texto */
+  font-size: 14px; /* Opcional: ajustar tamaño de la fuente */
+  font-weight: bold; /* Opcional: ajustar peso de la fuente */
+  text-transform: uppercase; /* Opcional: transformar texto a mayúsculas */
+  letter-spacing: 1px; /* Opcional: ajustar espaciado entre letras */
+  line-height: 1.5; /* Opcional: ajustar altura de línea */
 }
 
 /* Estilo de los inputs del formulario */
 .form-group input {
-    width: calc(100%); /* Establecer ancho para cada input */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    position: relative; /* Para posicionar el icono */
+  width: calc(100%); /* Establecer ancho para cada input */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  position: relative; /* Para posicionar el icono */
 }
 
 /* Botón de registro */
 .form-group input[type="submit"] {
-    width: 100%;
-    background-color: #5BC08A;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+  width: 100%;
+  background-color: #5bc08a;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
 /* Ajustar el ancho del input de apellido */
 .form-group input[name="last-name"] {
-    margin-left: 16px; /* Agregar espacio entre los inputs */
+  margin-left: 16px; /* Agregar espacio entre los inputs */
 }
 
 /* Flexbox para nombre y apellido */
 .name-inputs {
-    display: flex;
+  display: flex;
 }
 
 /* Envoltorio de contraseña */
 .password-wrapper {
-    position: relative;
+  position: relative;
 }
 
 /* Estilos del icono de ojo */
 .eye-icon {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
