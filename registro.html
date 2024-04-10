@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de Usuarios</title>
     <!-- Incluye la biblioteca Font Awesome para los iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
     <!-- Enlaza tu hoja de estilos personalizada -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" />
     <!-- Enlace a la fuente Zen Kaku Gothic Antique -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap" rel="stylesheet">
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap"
+      rel="stylesheet"
+    />
+  </head>
   <body>
     <!-- Barra de navegación -->
     <div class="navbar">
@@ -21,16 +27,14 @@
         <!-- Considera agregar un texto alternativo al logo para accesibilidad -->
         <img src="/img/logo.jpg" width="30" alt="Logo" />
       </div>
-
       <!-- Contenedor de inicio de sesión -->
       <div class="login-container">
         <!-- Texto "Tienes cuenta?" -->
         <div class="have-account">Tienes cuenta?</div>
         <!-- Botón de inicio de sesión -->
-        <a href="/inicio" class="login-btn">Iniciar Sesión</a>
+        <a href="/inicio.html" class="login-btn">Iniciar Sesión</a>
       </div>
     </div>
-
     <!-- Contenedor del formulario de registro -->
     <div class="form-container">
       <!-- Encabezado del formulario -->
@@ -38,7 +42,7 @@
         <h2>Regístrate</h2>
         <p class="zen-kaku-gothic-antique-regular">Ingresa tus datos</p>
       </div>
-      <form>
+      <form id="registrationForm">
         <!-- Grupo de entrada para nombres y apellidos -->
         <div class="form-group name-inputs">
           <div>
@@ -86,12 +90,24 @@
         </div>
         <!-- Botón para enviar el formulario de registro -->
         <div class="form-group">
-          <input type="submit" value="Registrar" />
+          <button type="button" onclick="registerUser(event)">Registrar</button>
+        </div>
+        <!-- Botón para eliminar la cookie de los usuarios registrados -->
+        <div class="form-group">
+          <button type="button" onclick="deleteUserCookie()">
+            Eliminar Cookie
+          </button>
+        </div>
+        <!-- Listado de usuarios registrados -->
+        <div class="form-group">
+          <button type="button" onclick="listRegisteredUsers()">
+            Listar Usuarios
+          </button>
+          <div id="registeredUsersList"></div>
         </div>
       </form>
     </div>
-
-    <!-- Script para la funcionalidad de alternar la visibilidad de la contraseña -->
-    <script src="/js/script.js"></script>
+    <!-- Script para la funcionalidad de alternar la visibilidad de la contraseña y las funcionalidades adicionales -->
+    <script src="js/script.js"></script>
   </body>
 </html>

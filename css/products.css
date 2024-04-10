@@ -1,5 +1,5 @@
 /* Estilos para la tarjeta de producto */
-.product-card {
+.product-card{
   display: flex;
   flex-direction: column;
   width: 255px; /* Ancho de la tarjeta */
@@ -8,12 +8,14 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombras para una leve elevación */
 }
 
+
 .product-card img {
   width: 100%;
   height: auto;
 }
 
 .product-info {
+  background-color: white;
   display: flex;
   flex-direction: column; /* Cambio a disposición en columna */
   justify-content: space-between;
@@ -24,8 +26,8 @@
 .product-name,
 .product-price {
   width: 100%; /* Extiende los elementos a lo ancho de la tarjeta */
-  background: white;
   padding: 4px; /* Agregar relleno alrededor del texto */
+  background: none;
 }
 
 .product-name {
@@ -34,6 +36,7 @@
   font-size: 16px; /* Tamaño 16 */
   color: #1D293F; /* Color #1D293F */
   text-align: left; /* Alinea el texto a la izquierda */
+  margin-left: 24px;
 }
 
 .product-price {
@@ -41,6 +44,7 @@
   font-size: 20px; /* Tamaño 20 */
   color: #56B280; /* Color #56B280 */
   text-align: right; /* Alinea el texto a la derecha */
+  margin-right: 16px;
 }
 
 /* Estilos para la sección de productos */
