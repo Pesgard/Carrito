@@ -1,47 +1,37 @@
 import { getAuth } from 'https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js';
-import { getFirestore, doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js';
+import { getFirestore, doc, setDoc, getDoc, query, collection, where, getDocs, updateDoc } from 'https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js';
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
 
 // Configuración de Firebase
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_DOMINIO.firebaseapp.com",
-  projectId: "TU_ID_DE_PROYECTO",
-  storageBucket: "TU_BUCKET.appspot.com",
-  messagingSenderId: "TU_ID_DE_MENSAJERÍA",
-  appId: "TU_APP_ID"
+  apiKey: "AIzaSyDvyv29HOhO1u_VJ11UTgidUghAq7n_vJU",
+  authDomain: "e-commerce-53447.firebaseapp.com",
+  projectId: "e-commerce-53447",
+  storageBucket: "e-commerce-53447.appspot.com",
+  messagingSenderId: "93754261648",
+  appId: "1:93754261648:web:70966240f346735e5ed815"
 };
-
 // Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const firestore = getFirestore(app);
 
-let cartItems = [];
 
-// Función para mostrar el carrito
-function toggleCart() {
-  const cartBasket = document.getElementById('cartBasket');
-  cartBasket.classList.toggle('hidden');
-}
-
-// Función para mostrar y ocultar el menú de usuario
-function toggleUserMenu() {
-  const userMenu = document.getElementById('userMenu');
-  userMenu.classList.toggle('hidden');
-}
 
 // Función para cerrar sesión
 function logout() {
   window.location.href = "/inicio.html";
 }
 
-// Función para agregar un producto al carrito
-async function addToCart(event) {
-  event.preventDefault();
+/// Función para agregar un producto al carrito
+document.getElementById("addToCartForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
   // Obtener detalles del producto
-  const productName = document.getElementById('productName').innerText;
+  let productName = document.getElementById('productName').innerText;
+  // Eliminar la cadena "Candleaf®" del nombre del producto
+  productName = productName.replace(/ Candleaf®/g, '');
+
   const productPrice = parseFloat(document.getElementById('productPrice').innerText.replace('$', ''));
   const count = parseInt(document.getElementById('productCount').value);
   const productImage = document.querySelector('.product__images--image img').getAttribute('src');
@@ -51,9 +41,10 @@ async function addToCart(event) {
     if (user) {
       const userId = user.uid;
 
-      const firestore = getFirestore();
       const cartRef = doc(firestore, 'carts', userId);
       const cartSnapshot = await getDoc(cartRef);
+      let cartItems = [];
+
       if (cartSnapshot.exists()) {
         cartItems = cartSnapshot.data().items || [];
       }
@@ -73,46 +64,35 @@ async function addToCart(event) {
         });
       }
 
-      // Guardar el carrito en Firestore
-      await setDoc(cartRef, { items: cartItems });
+      // Disminuir el stock del producto en la base de datos
+      const productQuery = query(collection(firestore, 'productos'), where('nombre', '==', productName));
+      const productQuerySnapshot = await getDocs(productQuery);
+      if (!productQuerySnapshot.empty) {
+        const productDoc = productQuerySnapshot.docs[0];
+        const productId = productDoc.id;
+        const productData = productDoc.data();
 
-      // Actualizar el carrito en la interfaz de usuario
-      updateCart();
-    } else {
-      console.log('No hay usuario autenticado');
+        const newStock = productData.cantidad - count;
+        if (newStock >= 0) {
+          // Actualizar el stock solo si hay suficiente cantidad disponible
+          await updateDoc(doc(firestore, 'productos', productId), { cantidad: newStock });
+
+          // Guardar el carrito en Firestore después de actualizar el stock
+          await setDoc(cartRef, { items: cartItems });
+        } else {
+          console.log('No hay suficiente stock disponible');
+          alert("No hay suficiente stock Disponible")
+          return;
+        }
+      } else {
+        console.log('No se encontró el producto en la base de datos');
+        return;
+      }
     }
   } catch (error) {
     console.error('Error al agregar el producto al carrito:', error.message);
   }
-}
-
-// Función para actualizar el carrito en la interfaz de usuario
-function updateCart() {
-  const cartDetails = document.getElementById('cartDetails');
-  cartDetails.innerHTML = '';
-  let totalAmount = 0;
-
-  cartItems.forEach(item => {
-    const itemTotal = item.price * item.quantity;
-    totalAmount += itemTotal;
-    cartDetails.innerHTML += `
-            <div>
-                <img src="${item.image}" alt="${item.name}" style="width: 50px;">
-                <p>${item.name} - $${item.price.toFixed(2)} MXN x ${item.quantity}</p>
-                <button onclick="removeItem('${item.name}')">Remove</button>
-            </div>
-        `;
-  });
-
-  const totalAmountElement = document.getElementById('totalAmount');
-  totalAmountElement.innerText = `Total: $${totalAmount.toFixed(2)} MXN`;
-}
-
-// Función para eliminar un producto del carrito
-function removeItem(name) {
-  cartItems = cartItems.filter(item => item.name !== name);
-  updateCart();
-}
+});
 
 // Función para incrementar la cantidad de productos
 const plusCountInput = document.getElementById('plusProductCount').addEventListener("click", async (e) => {
@@ -121,15 +101,13 @@ const plusCountInput = document.getElementById('plusProductCount').addEventListe
   console.log(countInput.value)
 });
 
-
 // Función para decrementar la cantidad de productos
 const minusCountInput = document.getElementById('minusProductCount').addEventListener("click", async (e) => {
   const countInput = document.getElementById('productCount');
   const newValue = parseInt(countInput.value) - 1;
   countInput.value = newValue < 1 ? 1 : newValue;
   console.log(countInput.value)
-})
-
+});
 
 // Evento para cargar el carrito desde Firestore al cargar la página
 window.addEventListener('load', async function () {

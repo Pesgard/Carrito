@@ -24,20 +24,17 @@
         <a class="bt" href="/configuracion.html">Configuracion</a>
       </div>
       <div class="end-section">
-        <button class="bt-Icons" onclick="toggleUserMenu()">
+        <button class="bt-Icons" id="userButton">
           <i class="fa-regular fa-user"></i>
         </button>
-        <button id="toggleCartButton" class="bt-Icons" onclick="toggleCart()">
+        <button id="toggleCartButton" class="bt-Icons">
           <i class="fa-solid fa-cart-shopping"></i>
         </button>
-
-        <!-- Nuevo código para el menú de usuario -->
+        <!-- Menú de usuario -->
         <div id="userMenu" class="user-menu hidden">
-          <button class="logout-button" onclick="logout()">
-            Cerrar sesión
-          </button>
+          <button class="logout-button" id="logOutButton">Cerrar sesión</button>
         </div>
-
+        <!-- Carrito -->
         <div id="cartBasket" class="header__cart-basket hidden">
           <span id="closeCart">
             <svg class="cart-close" onclick="toggleCart()">
