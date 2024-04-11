@@ -18,6 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap"
       rel="stylesheet"
     />
+    <!-- Agrega el script de Supabase -->
   </head>
   <body>
     <!-- Barra de navegación -->
@@ -90,24 +91,12 @@
         </div>
         <!-- Botón para enviar el formulario de registro -->
         <div class="form-group">
-          <button type="button" onclick="registerUser(event)">Registrar</button>
-        </div>
-        <!-- Botón para eliminar la cookie de los usuarios registrados -->
-        <div class="form-group">
-          <button type="button" onclick="deleteUserCookie()">
-            Eliminar Cookie
-          </button>
-        </div>
-        <!-- Listado de usuarios registrados -->
-        <div class="form-group">
-          <button type="button" onclick="listRegisteredUsers()">
-            Listar Usuarios
-          </button>
-          <div id="registeredUsersList"></div>
+          <button type="submit">Registrar</button>
         </div>
       </form>
     </div>
-    <!-- Script para la funcionalidad de alternar la visibilidad de la contraseña y las funcionalidades adicionales -->
+    <!-- Script para la funcionalidad de alternar la visibilidad de la contraseña -->
     <script src="js/script.js"></script>
+    <script type="module" src="js/Sesion/registro.js"></script>
   </body>
 </html>

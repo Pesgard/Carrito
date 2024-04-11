@@ -11,46 +11,7 @@ function togglePassword() {
     }
 }
 
-function registerUser(event) {
-    event.preventDefault(); // Evita que el formulario se envíe automáticamente
 
-    // Obtener los valores de los campos del formulario
-    const firstName = document.getElementById('first-name').value;
-    const lastName = document.getElementById('last-name').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    // Comprobar si el usuario ya está registrado
-    const existingUsers = getRegisteredUsers();
-    const userExists = existingUsers.find(user => user.email === email);
-    if (userExists) {
-        alert('El usuario ya está registrado.');
-        return;
-    }
-
-    // Crear un nuevo objeto de usuario
-    const newUser = {
-        firstName,
-        lastName,
-        email,
-        password
-    };
-
-    // Agregar el nuevo usuario a la lista de usuarios registrados
-    existingUsers.push(newUser);
-
-    // Guardar la lista actualizada de usuarios registrados en la cookie
-    setRegisteredUsers(existingUsers);
-
-    // Limpiar los campos del formulario
-    document.getElementById('first-name').value = '';
-    document.getElementById('last-name').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('password').value = '';
-
-    // Confirmar el registro exitoso
-    alert('Usuario registrado correctamente.');
-}
 
 function deleteUserCookie() {
     // Eliminar la cookie de usuarios registrados
@@ -91,47 +52,3 @@ function setRegisteredUsers(users) {
     document.cookie = `registeredUsers=${encodeURIComponent(usersJson)}; path=/;`;
 }
 
-//INICIO DE SESION DE USUARIOS
-
-document.addEventListener('DOMContentLoaded', function() {
-    const loginForm = document.getElementById('loginForm');
-    if (loginForm) {
-        loginForm.addEventListener('submit', loginUser);
-    } else {
-        console.error('El formulario de inicio de sesión no se encontró en el DOM.');
-    }
-});
-
-function loginUser(event) {
-    event.preventDefault(); // Evitar que el formulario se envíe automáticamente
-
-    // Obtener los valores de los campos del formulario
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    // Obtener la lista de usuarios registrados desde la cookie
-    const registeredUsers = getRegisteredUsers();
-
-    // Verificar si las credenciales coinciden con algún usuario registrado
-    const user = registeredUsers.find(user => user.email === email && user.password === password);
-
-    if (user) {
-        // Credenciales válidas, redireccionar al usuario a la página de productos
-        window.location.href = '/productos.html';
-    } else {
-        // Credenciales inválidas, mostrar un mensaje de error
-        alert('Credenciales incorrectas. Por favor, verifica tu correo electrónico y contraseña.');
-    }
-}
-
-// Función para obtener la lista de usuarios registrados desde la cookie
-function getRegisteredUsers() {
-    const cookies = document.cookie.split(';');
-    const registeredUsersCookie = cookies.find(cookie => cookie.trim().startsWith('registeredUsers='));
-    if (registeredUsersCookie) {
-        const usersJson = decodeURIComponent(registeredUsersCookie.split('=')[1]);
-        return JSON.parse(usersJson);
-    } else {
-        return [];
-    }
-}

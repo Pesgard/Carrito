@@ -1,6 +1,6 @@
 /* Resetear márgenes y rellenos predeterminados */
 * {
-  background-color: #f1f4fe;
+  background-color: var(--background-color, #f1f4fe); /* Utilizar variable CSS para el color de fondo */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,8 +12,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f1f4fe;
-  color: #424242;
+  background-color: var(--background-color, #f1f4fe); /* Utilizar variable CSS para el color de fondo */
+  color: var(--font-color, #424242); /* Utilizar variable CSS para el color de texto */
   padding: 10px 20px;
 }
 
@@ -39,8 +39,8 @@
 /* Estilos del botón de inicio de sesión */
 .navbar .login-btn {
   background-color: transparent; /* Eliminar color de fondo */
-  color: #212121; /* Establecer color de texto */
-  border: 1px solid #212121; /* Agregar borde */
+  color: var(--button-color, #212121); /* Utilizar variable CSS para el color de texto */
+  border: 1px solid var(--button-color, #212121); /* Utilizar variable CSS para el color del borde */
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -98,8 +98,8 @@
 /* Botón de registro */
 .form-group input[type="submit"], button {
   width: 100%;
-  background-color: #5bc08a;
-  color: #fff;
+  background-color: var(--button-background-color, #5bc08a); /* Utilizar variable CSS para el color de fondo del botón */
+  color: var(--button-text-color, #fff); /* Utilizar variable CSS para el color de texto del botón */
   border: none;
   cursor: pointer;
 }

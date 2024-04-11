@@ -11,83 +11,66 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="../css/seccion-style.css" />
-    <link rel="stylesheet" href="../css/products.css" />
-    <!-- Vincula tu archivo CSS de productos -->
+    <link rel="stylesheet" href="/css/details.css" />
+    <link rel="stylesheet" href="/css/seccion-style.css" />
+    <link rel="stylesheet" href="/css/products.css" />
   </head>
-  <body> <!-- Fondo blanco -->
-    <!--Barra de navgacion superior -->
+  <body>
+    <!-- Barra de navegación superior -->
     <nav class="nav-bar">
       <div class="center-section">
-        <button class="bt">Explorar</button>
-        <button class="bt">Sobre nosotros</button>
-        <button class="bt">Contactanos</button>
+        <a class="bt" href="/productos.html">Explorar</a>
+        <a class="bt" href="/contacto.html">Contactanos</a>
+        <a class="bt" href="/configuracion.html">Configuracion</a>
       </div>
       <div class="end-section">
-        <button class="bt-Icons">
+        <button class="bt-Icons" onclick="toggleUserMenu()">
           <i class="fa-regular fa-user"></i>
         </button>
-        <button class="bt-Icons">
+        <button id="toggleCartButton" class="bt-Icons" onclick="toggleCart()">
           <i class="fa-solid fa-cart-shopping"></i>
         </button>
+
+        <!-- Nuevo código para el menú de usuario -->
+        <div id="userMenu" class="user-menu hidden">
+          <button class="logout-button" onclick="logout()">
+            Cerrar sesión
+          </button>
+        </div>
+
+        <div id="cartBasket" class="header__cart-basket hidden">
+          <span id="closeCart">
+            <svg class="cart-close" onclick="toggleCart()">
+              <use href="/img/sprite.svg#icon-close"></use>
+            </svg>
+          </span>
+          <h4 class="header__cart-basket--heading">Carrito</h4>
+          <div id="cartDetails" class="header__cart-basket--details">
+            <!-- Contenido del carrito aparecerá aquí -->
+          </div>
+          <div class="header__cart-basket--details" id="totalAmount">
+            Total:
+          </div>
+          <a href="#" class="button checkout__button">Checkout</a>
+        </div>
       </div>
-      <!-- Contenido de la pagina-->
     </nav>
-  
-  <main>
-    <!-- Título y subtítulo de la sección de productos -->
-    <div class="section-header">
-      <h2>Productos Destacados</h2>
-      <p>Encuentra los mejores productos aquí</p>
-    </div>
-    <!-- Sección de productos -->
-    <section class="product-section">
-      <!-- Tarjeta de producto 1 -->
-      <div class="product-card">
-        <img src="/img//producto.png" alt="Nombre del producto" /> <!-- Fondo de la imagen -->
-        <div class="product-info">
-          <div class="product-name">Spiced Mint</div>
-          <div class="product-price">200.50 MXN</div>
-        </div>
-      </div>
 
-      <!-- Tarjeta de producto 2 -->
-      <div class="product-card">
-        <img src="/img//producto.png" alt="Nombre del producto" /> <!-- Fondo de la imagen -->
-        <div class="product-info">
-          <div class="product-name">Sweet Straweberry</div>
-          <div class="product-price">200.50 MXN</div>
-        </div>
+    <main>
+      <!-- Título y subtítulo de la sección de productos -->
+      <div class="section-header">
+        <h2>Productos Destacados</h2>
+        <p>Encuentra los mejores productos aquí</p>
       </div>
+      <!-- Sección de productos -->
+      <section id="productSection" class="product-section">
+        <!-- Los productos serán cargados aquí dinámicamente -->
+      </section>
+    </main>
 
-      <!-- Tarjeta de producto 3 -->
-      <div class="product-card">
-        <img src="/img//producto.png" alt="Nombre del producto"/> <!-- Fondo de la imagen -->
-        <div class="product-info">
-          <div class="product-name">Cool Blueberries</div>
-          <div class="product-price">200.50 MXN</div>
-        </div>
-      </div>
-
-      <!-- Tarjeta de producto 4 -->
-      <div class="product-card">
-        <img src="/img//producto.png" alt="Nombre del producto" /> <!-- Fondo de la imagen -->
-        <div class="product-info">
-          <div class="product-name">Juicy Lemon</div>
-          <div class="product-price">200.50 MXN</div>
-        </div>
-      </div>
-
-      <!-- Tarjeta de producto 5 -->
-      <div class="product-card">
-        <img src="/img//producto.png" alt="Nombre del producto"/> <!-- Fondo de la imagen -->
-        <div class="product-info">
-          <div class="product-name">Fragrant Cinnamon</div>
-          <div class="product-price">200.50 MXN</div>
-        </div>
-      </div>
-
-      <!-- Añade más tarjetas de productos según sea necesario -->
-    </section>
-  </main>
+    <script type="module" src="/js/carrito.js"></script>
+    <script type="module" src="/js/BD/products.js"></script>
+    <script type="module" src="/js/details.js"></script>
+    <script type="module" src="/js/configuracion.js"></script>
+  </body>
 </html>

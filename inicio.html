@@ -17,6 +17,7 @@
     />
     <!-- Enlace a la hoja de estilos personalizada -->
     <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   </head>
   <body>
     <!-- Barra de navegación -->
@@ -40,7 +41,9 @@
       <!-- Encabezado del formulario -->
       <div class="form-header">
         <h2>Iniciar Sesión</h2>
-        <p class="zen-kaku-gothic-antique-regular">Ingresa los datos de tu cuenta para ingresar</p>
+        <p class="zen-kaku-gothic-antique-regular">
+          Ingresa los datos de tu cuenta para ingresar
+        </p>
       </div>
       <form id="loginForm">
         <!-- Campo de entrada para el correo electrónico -->
@@ -69,12 +72,14 @@
         </div>
         <!-- Botón para enviar el formulario de inicio de sesión -->
         <div class="form-group">
-          <input type="submit" value="Iniciar Sesión" />
+          <button type="submit">Iniciar Sesion</button>
         </div>
       </form>
     </div>
 
     <!-- Script para la funcionalidad de alternar la visibilidad de la contraseña -->
     <script src="/js/script.js"></script>
+    <script type="module" src="/js/Sesion/login.js"></script>
+    <script src="/js/configuracion.js"></script>
   </body>
 </html>

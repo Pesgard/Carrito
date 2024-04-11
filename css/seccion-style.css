@@ -1,5 +1,6 @@
+/* Resetear márgenes y rellenos predeterminados */
 * {
-  background-color: #f1f4fe;
+  background-color: var(--background-color, #f1f4fe); /* Utilizar variable CSS para el color de fondo */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -11,12 +12,11 @@
 }
 
 .bt {
-  background-color: #f1f4fe;
+  background-color: var(--button-background-color, #f1f4fe); /* Utilizar variable CSS para el color de fondo del botón */
   border: none;
   padding: 0;
   cursor: pointer;
-
-  color: #424242;
+  color: var(--font-color, #424242); /* Utilizar variable CSS para el color de texto */
   padding: 10px 20px;
 }
 
@@ -33,7 +33,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background-color: #f1f4fe;
+  background-color: var(--background-color, #f1f4fe); /* Utilizar variable CSS para el color de fondo */
 }
 
 .center-section {

@@ -1,13 +1,20 @@
 /* Estilos para la tarjeta de producto */
-.product-card{
+.product-card {
   display: flex;
   flex-direction: column;
   width: 255px; /* Ancho de la tarjeta */
   height: 230px; /* Altura de la tarjeta */
-  margin: 10px;
+  margin: 29px; /* Espacio exterior */
+  margin-bottom: 20px; /* Espacio inferior para separar las tarjetas */
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombras para una leve elevación */
+  text-decoration: none; /* Elimina el subrayado del texto */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave al hacer hover */
 }
 
+.product-card:hover {
+  transform: translateY(-5px); /* Desplazar hacia arriba al hacer hover */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+}
 
 .product-card img {
   width: 100%;
@@ -15,7 +22,10 @@
 }
 
 .product-info {
-  background-color: white;
+  background-color: var(
+    --product-info-background-color,
+    white
+  ); /* Utilizar variable CSS para el color de fondo */
   display: flex;
   flex-direction: column; /* Cambio a disposición en columna */
   justify-content: space-between;
@@ -31,18 +41,24 @@
 }
 
 .product-name {
-  font-family: 'Poppins', sans-serif; /* Fuente Poppins */
+  font-family: "Poppins", sans-serif; /* Fuente Poppins */
   font-weight: 500; /* Medium */
   font-size: 16px; /* Tamaño 16 */
-  color: #1D293F; /* Color #1D293F */
+  color: var(
+    --product-name-color,
+    #1d293f
+  ); /* Utilizar variable CSS para el color de texto */
   text-align: left; /* Alinea el texto a la izquierda */
   margin-left: 24px;
 }
 
 .product-price {
-  font-family: 'Roboto', sans-serif; /* Fuente Roboto */
+  font-family: "Roboto", sans-serif; /* Fuente Roboto */
   font-size: 20px; /* Tamaño 20 */
-  color: #56B280; /* Color #56B280 */
+  color: var(
+    --product-price-color,
+    #56b280
+  ); /* Utilizar variable CSS para el color de texto */
   text-align: right; /* Alinea el texto a la derecha */
   margin-right: 16px;
 }
@@ -55,22 +71,28 @@
 }
 
 /* Estilos para el título y el subtítulo de la sección de productos */
-.section-header {  
+.section-header {
   text-align: center; /* Alinea el texto al centro */
   margin-bottom: 40px; /* Espacio entre el encabezado y las tarjetas de productos */
   margin-top: 5%;
 }
 
 .section-header h2 {
-  font-family: 'Poppins', sans-serif; /* Fuente Poppins */
+  font-family: "Poppins", sans-serif; /* Fuente Poppins */
   font-weight: 500; /* Medium */
   font-size: 40px; /* Tamaño 40 */
-  color: #0B254B; /* Color #0B254B */
+  color: var(
+    --section-header-title-color,
+    #0b254b
+  ); /* Utilizar variable CSS para el color de texto */
   margin-bottom: 5px; /* Espacio entre el título y el subtítulo */
 }
 
 .section-header p {
-  font-family: 'Poppins', sans-serif; /* Fuente Poppins */
+  font-family: "Poppins", sans-serif; /* Fuente Poppins */
   font-size: 15px; /* Tamaño 15 */
-  color: #5E6E89; /* Color #5E6E89 */
+  color: var(
+    --section-header-text-color,
+    #5e6e89
+  ); /* Utilizar variable CSS para el color de texto */
 }

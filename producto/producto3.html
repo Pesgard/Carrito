@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="/css/details.css" />
+    <link rel="stylesheet" href="/css/seccion-style.css" />
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav-bar">
+      <div class="center-section">
+        <a class="bt" href="/productos.html">Explorar</a>
+        <a class="bt" href="/contacto.html">Contactanos</a>
+        <a class="bt" href="/configuracion.html">Configuracion</a>
+      </div>
+      <div class="end-section">
+        <button class="bt-Icons" onclick="toggleUserMenu()">
+          <i class="fa-regular fa-user"></i>
+        </button>
+        <button id="toggleCartButton" class="bt-Icons" onclick="toggleCart()">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+
+      <!-- Nuevo código para el menú de usuario -->
+    <div id="userMenu" class="user-menu hidden">
+      <button class="logout-button" onclick="logout()">Cerrar sesión</button>
+    </div>
+
+    <div id="cartBasket" class="header__cart-basket hidden">
+      <span id="closeCart">
+        <svg class="cart-close" onclick="toggleCart()">
+          <use href="/img/sprite.svg#icon-close"></use>
+        </svg>
+      </span>
+      <h4 class="header__cart-basket--heading">Carrito</h4>
+      <div id="cartDetails" class="header__cart-basket--details">
+        <!-- Contenido del carrito aparecerá aquí -->
+      </div>
+      <div class="header__cart-basket--details" id="totalAmount">Total:</div>
+      <a href="#" class="button checkout__button">Checkout</a>
+    </div>
+      </div>
+      <!-- Contenido de la pagina-->
+    </nav>
+
+    <section class="product">
+      <div class="product__images">
+        <div class="product__images--image">
+          <img
+            src="/img/producto3.png"
+            alt="Main image"
+            class="product__images__main light__box-show"
+          />
+        </div>
+        <div class="thumbnail-container thumbnail-container-main"></div>
+      </div>
+
+      <div class="product__details">
+        <h1 id="productName" class="product__details__heading--main">
+          Cool Blueberries Candleaf®
+        </h1>
+
+        <div class="product__details__amount">
+          <p id="productPrice" class="product__details__discounted-amount">
+            $ 200.50 MXN
+          </p>
+        </div>
+
+        <form onsubmit="addToCart(event)" class="product__details__cart">
+          <div class="product__details__count">
+            <a class="calc__button minus__button" onclick="decrementCount()">
+              <span class="minus__icon">
+                <svg class="minus-button">
+                  <use href="/img/sprite.svg#icon-minus"></use>
+                </svg>
+              </span>
+            </a>
+            <input
+              type="number"
+              id="productCount"
+              class="product__count"
+              name="count"
+              value="1"
+              min="1"
+              placeholder="0"
+            />
+            <a class="calc__button plus__button" onclick="incrementCount()">
+              <span class="plus__icon">
+                <svg class="plus-button">
+                  <use href="/img/sprite.svg#icon-plus"></use>
+                </svg>
+              </span>
+            </a>
+          </div>
+          <button type="submit" class="button button__addtocart">
+            <span class="addtocart__image">
+              <svg>
+                <use href="/img/sprite.svg#icon-cart"></use>
+              </svg>
+            </span>
+            Add to cart
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <script src="/js/details.js"></script>
+    <script src="/js/configuracion.js"></script>
+  </body>
+</html>
