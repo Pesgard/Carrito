@@ -10,62 +10,65 @@
         margin-bottom: 10px;
       }
     </style>
+    <link rel="stylesheet" href="/css/admin.css" />
   </head>
 
   <body>
-    <h1>Panel de Administrador</h1>
+    <section>
+      <h1>Panel de Administrador</h1>
 
-    <!-- Cuadro de búsqueda -->
-    <input
-      type="text"
-      id="searchBox"
-      placeholder="Buscar producto por nombre"
-    />
+      <!-- Cuadro de búsqueda -->
+      <input
+        type="text"
+        id="searchBox"
+        placeholder="Buscar producto por nombre"
+      />
 
-    <!-- Lista de productos -->
-    <ul id="productList">
-      <!-- Los productos se agregarán aquí dinámicamente desde JavaScript -->
-    </ul>
+      <!-- Lista de productos -->
+      <ul id="productList">
+        <!-- Los productos se agregarán aquí dinámicamente desde JavaScript -->
+      </ul>
+    </section>
 
-    <!-- Botón para agregar nuevo producto -->
-    <h2>Agregar Nuevo Producto</h2>
-    <form id="addProductForm">
-      <div>
-        <label for="productName">Nombre Producto:</label>
-        <input type="text" id="productName" name="productName" required />
-      </div>
-      <div>
-        <label for="productQuantity">Cantidad:</label>
-        <input
-          type="number"
-          id="productQuantity"
-          name="productQuantity"
-          required
-        />
-      </div>
-      <div>
-        <label for="productPrice">Precio:</label>
-        <input type="number" id="productPrice" name="productPrice" required />
-      </div>
-      <div>
-        <label for="productImage">Imagen:</label>
-        <input
-          type="file"
-          id="productImage"
-          name="productImage"
-          accept="image/*"
-          required
-        />
-      </div>
-      <button type="submit">Agregar Producto</button>
-    </form>
+    <section>
+      <!-- Botón para agregar nuevo producto -->
+      <h2>Agregar Nuevo Producto</h2>
+      <form id="addProductForm">
+        <div>
+          <label for="productName">Nombre Producto:</label>
+          <input type="text" id="productName" name="productName" required />
+        </div>
+        <div>
+          <label for="productQuantity">Cantidad:</label>
+          <input
+            type="number"
+            id="productQuantity"
+            name="productQuantity"
+            required
+          />
+        </div>
+        <div>
+          <label for="productPrice">Precio:</label>
+          <input type="number" id="productPrice" name="productPrice" required />
+        </div>
+        <div>
+          <label for="productImage">Imagen:</label>
+          <input
+            type="file"
+            id="productImage"
+            name="productImage"
+            accept="image/*"
+            required
+          />
+        </div>
+        <button type="submit">Agregar Producto</button>
+      </form>
 
-    <!-- Botón para obtener el ID del próximo producto -->
-    <button id="idProducts">Obtener ID del próximo producto</button>
+    </section>
 
     <section>
       <h2>Modificar Productos</h2>
-      <button id="editModeButton" style="display: none;">Editar Producto</button>
+      <button id="editModeButton" style="display: none">Editar Producto</button>
 
       <!-- Formulario para editar productos -->
       <form id="editProductForm" style="display: none">

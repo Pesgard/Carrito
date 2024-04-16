@@ -32,11 +32,6 @@ const editProductQuantityInput = document.getElementById("editProductQuantity")
 const editProductPriceInput = document.getElementById("editProductPrice")
 
 
-const buttonID = document.getElementById("idProducts")
-buttonID.addEventListener('click', async () => {
-    const id = getNextProductId()
-    console.log(id)
-})
 
 // Agregar un evento de escucha al formulario para manejar el envío
 form.addEventListener('submit', async (event) => {
@@ -130,7 +125,7 @@ const addProduct = async (productDetails, productId) => {
     try {
         // Agrega el producto a la colección "productos" en Firestore con el ID específico
         await setDoc(doc(firestore, 'productos', productId), productDetails);
-        console.log('Producto agregado correctamente:', productDetails);
+        alert('Producto agregado correctamente:', productDetails);
     } catch (error) {
         console.error('Error al agregar el producto:', error);
     }
