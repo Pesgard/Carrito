@@ -10,10 +10,31 @@
         margin-bottom: 10px;
       }
     </style>
+    <link rel="stylesheet" href="/css/seccion-style.css">
     <link rel="stylesheet" href="/css/admin.css" />
   </head>
 
   <body>
+
+    <nav class="nav-bar">
+        <div class="center-section">
+          <a class="bt" href="/productos.html">Explorar</a>
+          <a class="bt" href="/contacto.html">Contactanos</a>
+          <a class="bt" href="/configuracion.html">Configuracion</a>
+        </div>
+        <div class="end-section">
+          <button class="bt-Icons" id="userButton">
+            <i class="fa-regular fa-user"></i>
+          </button>
+          <button id="toggleCartButton" class="bt-Icons">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+          <!-- Menú de usuario -->
+          <div id="userMenu" class="user-menu hidden">
+            <button class="logout-button" id="logOutButton">Cerrar sesión</button>
+          </div>
+      </nav>
+
     <section>
       <h1>Panel de Administrador</h1>
 
