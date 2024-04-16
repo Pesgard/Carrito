@@ -20,6 +20,36 @@ const firestore = getFirestore(app);
 
 let cartItems = [];
 
+// Función para limpiar el carrito del usuario
+async function clearCart() {
+    try {
+        // Limpiar el array de elementos del carrito
+        cartItems = [];
+
+        // Actualizar el carrito en Firestore
+        const user = auth.currentUser;
+        if (user) {
+            const userId = user.uid;
+            const cartRef = doc(firestore, 'carts', userId);
+
+            // Actualizar el carrito en Firestore con el array vacío
+            await setDoc(cartRef, { items: cartItems });
+
+            // Mostrar una alerta de que la compra se realizó con éxito
+            alert('¡Tu carrito se ha limpiado con éxito!');
+
+            // Redirigir al usuario a la página de productos
+            window.location.href = "/productos.html";
+
+            // Actualizar el carrito en la interfaz de usuario
+            updateCart();
+        }
+    } catch (error) {
+        console.error('Error al limpiar el carrito:', error);
+    }
+}
+
+
 // Función para mostrar el carrito
 function toggleCart() {
     const cartBasket = document.getElementById('cartBasket');
@@ -76,6 +106,12 @@ logOutButton.addEventListener("click", async (e) => {
     } catch (error) {
         console.error('Error al cerrar sesión:', error.message);
     }
+})
+
+//Funcion para agregar los pagos de los productos:
+const checkoutButton = document.getElementById("checkoutButton")
+checkoutButton.addEventListener("click", () => {
+    clearCart()
 })
 
 
@@ -150,7 +186,7 @@ async function removeItemFromCart(event) {
                     cantidad: newStock
                 });
             } else {
-                console.log('No se encontró el producto en la base de datos');
+                console.log('No se encontró el producto en la base de datos', error);
             }
 
             // Actualizar el carrito en la interfaz de usuario

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel de Administrador</title>
+    <style>
+      /* Estilos para el cuadro de búsqueda */
+      #searchBox {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Panel de Administrador</h1>
+
+    <!-- Cuadro de búsqueda -->
+    <input
+      type="text"
+      id="searchBox"
+      placeholder="Buscar producto por nombre"
+    />
+
+    <!-- Lista de productos -->
+    <ul id="productList">
+      <!-- Los productos se agregarán aquí dinámicamente desde JavaScript -->
+    </ul>
+
+    <!-- Botón para agregar nuevo producto -->
+    <h2>Agregar Nuevo Producto</h2>
+    <form id="addProductForm">
+      <div>
+        <label for="productName">Nombre Producto:</label>
+        <input type="text" id="productName" name="productName" required />
+      </div>
+      <div>
+        <label for="productQuantity">Cantidad:</label>
+        <input
+          type="number"
+          id="productQuantity"
+          name="productQuantity"
+          required
+        />
+      </div>
+      <div>
+        <label for="productPrice">Precio:</label>
+        <input type="number" id="productPrice" name="productPrice" required />
+      </div>
+      <div>
+        <label for="productImage">Imagen:</label>
+        <input
+          type="file"
+          id="productImage"
+          name="productImage"
+          accept="image/*"
+          required
+        />
+      </div>
+      <button type="submit">Agregar Producto</button>
+    </form>
+
+    <!-- Botón para obtener el ID del próximo producto -->
+    <button id="idProducts">Obtener ID del próximo producto</button>
+
+    <section>
+      <h2>Modificar Productos</h2>
+      <button id="editModeButton" style="display: none;">Editar Producto</button>
+
+      <!-- Formulario para editar productos -->
+      <form id="editProductForm" style="display: none">
+        <div>
+          <label for="editProductName">Nombre Producto:</label>
+          <input
+            type="text"
+            id="editProductName"
+            name="editProductName"
+            required
+          />
+        </div>
+        <div>
+          <label for="editProductQuantity">Cantidad:</label>
+          <input
+            type="number"
+            id="editProductQuantity"
+            name="editProductQuantity"
+            required
+          />
+        </div>
+        <div>
+          <label for="editProductPrice">Precio:</label>
+          <input
+            type="number"
+            id="editProductPrice"
+            name="editProductPrice"
+            required
+          />
+        </div>
+        <button type="submit">Actualizar Producto</button>
+      </form>
+    </section>
+
+    <script type="module" src="/js/BD/admin.js"></script>
+  </body>
+</html>

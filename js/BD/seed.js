@@ -1,6 +1,8 @@
 // Importa el SDK de Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
 import { getFirestore, collection, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, browserLocalPersistence, setPersistence } from 'https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js'
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyDvyv29HOhO1u_VJ11UTgidUghAq7n_vJU",
@@ -13,6 +15,7 @@ const firebaseConfig = {
 
 // Inicializa tu aplicación Firebase
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app)
 
 // Obtiene una referencia a tu base de datos Firebase
 const firestore = getFirestore(app);
@@ -42,5 +45,18 @@ const agregarProductos = async () => {
     }
 };
 
+// Configurar reclamaciones personalizadas para usuarios administradores
+const setAdminClaims = async () => {
+    try {
+        const uid = "T9A38Fw5cPXA7RcqtTRI7qFRCv62";
+        await getAuth(app).setCustomUserClaims(uid, { admin: true });
+        console.log('Reclamaciones de administrador configuradas para el usuario:', uid);
+    } catch (error) {
+        console.error('Error al configurar reclamaciones de administrador:', error);
+    }
+}
+
+
 // Escucha el clic en el botón y llama a la función agregarProductos
 document.getElementById('runScriptButton').addEventListener('click', agregarProductos);
+document.getElementById('admin').addEventListener('click', setAdminClaims);

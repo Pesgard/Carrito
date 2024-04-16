@@ -16,25 +16,19 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const firestore = getFirestore(app);
 
+//Constantes dentro del html
+const productPrice = parseFloat(document.getElementById('productPrice').innerText.replace('$', ''));
+const count = parseInt(document.getElementById('productCount').value);
+const productImage = document.querySelector('.product__images--image img').getAttribute('src');
+// Obtener detalles del producto
+const productName = document.getElementById('productName').innerText;
+
+let mainImage
 
 
-// Función para cerrar sesión
-function logout() {
-  window.location.href = "/inicio.html";
-}
-
-/// Función para agregar un producto al carrito
+// Función para agregar un producto al carrito
 document.getElementById("addToCartForm").addEventListener("submit", async (e) => {
   e.preventDefault();
-
-  // Obtener detalles del producto
-  let productName = document.getElementById('productName').innerText;
-  // Eliminar la cadena "Candleaf®" del nombre del producto
-  productName = productName.replace(/ Candleaf®/g, '');
-
-  const productPrice = parseFloat(document.getElementById('productPrice').innerText.replace('$', ''));
-  const count = parseInt(document.getElementById('productCount').value);
-  const productImage = document.querySelector('.product__images--image img').getAttribute('src');
 
   try {
     const user = auth.currentUser;
@@ -53,14 +47,14 @@ document.getElementById("addToCartForm").addEventListener("submit", async (e) =>
       const existingItemIndex = cartItems.findIndex(item => item.name === productName);
       if (existingItemIndex !== -1) {
         // Si el producto ya está en el carrito, actualizar la cantidad
-        cartItems[existingItemIndex].quantity += count;
+        cartItems[existingItemIndex].quantity += parseInt(document.getElementById('productCount').value); // Obtener el valor actualizado de la cantidad
       } else {
         // Si el producto no está en el carrito, agregarlo
         cartItems.push({
           name: productName,
           price: productPrice,
-          quantity: count,
-          image: productImage
+          quantity: parseInt(document.getElementById('productCount').value), // Obtener el valor actualizado de la cantidad
+          image: mainImage.src
         });
       }
 
@@ -72,7 +66,7 @@ document.getElementById("addToCartForm").addEventListener("submit", async (e) =>
         const productId = productDoc.id;
         const productData = productDoc.data();
 
-        const newStock = productData.cantidad - count;
+        const newStock = productData.cantidad - parseInt(document.getElementById('productCount').value); // Obtener el valor actualizado de la cantidad
         if (newStock >= 0) {
           // Actualizar el stock solo si hay suficiente cantidad disponible
           await updateDoc(doc(firestore, 'productos', productId), { cantidad: newStock });
@@ -94,6 +88,7 @@ document.getElementById("addToCartForm").addEventListener("submit", async (e) =>
   }
 });
 
+
 // Función para incrementar la cantidad de productos
 const plusCountInput = document.getElementById('plusProductCount').addEventListener("click", async (e) => {
   const countInput = document.getElementById('productCount')
@@ -112,18 +107,42 @@ const minusCountInput = document.getElementById('minusProductCount').addEventLis
 // Evento para cargar el carrito desde Firestore al cargar la página
 window.addEventListener('load', async function () {
   try {
-    const user = auth.currentUser;
-    if (user) {
-      const userId = user.uid;
-
-      const cartRef = doc(firestore, 'carts', userId);
-      const cartSnapshot = await getDoc(cartRef);
-      if (cartSnapshot.exists()) {
-        cartItems = cartSnapshot.data().items || [];
-        updateCart();
-      }
-    }
+    updateProductImage(productName)
   } catch (error) {
-    console.error('Error al cargar el carrito desde Firestore:', error.message);
+    console.error(error.message);
   }
 });
+
+// Función para actualizar la imagen en el HTML
+async function updateProductImage(productName) {
+  try {
+    const productImage = await getProductImage(productName); // Obtener el enlace de descarga de la imagen
+    if (productImage) {
+      mainImage = document.querySelector('.product__images__main'); // Seleccionar el elemento de la imagen principal
+      mainImage.src = productImage; // Actualizar el atributo src con el enlace de descarga de la imagen
+    }
+  } catch (error) {
+    console.error('Error al actualizar la imagen del producto en el HTML:', error.message);
+  }
+}
+
+// Función para obtener el enlace de descarga de la imagen de un producto
+async function getProductImage(productName) {
+  try {
+    const productQuery = query(collection(firestore, 'productos'), where('nombre', '==', productName));
+    const productQuerySnapshot = await getDocs(productQuery);
+
+    if (!productQuerySnapshot.empty) {
+      const productDoc = productQuerySnapshot.docs[0];
+      const productData = productDoc.data();
+      return productData.imagen; // Suponiendo que el campo de la imagen se llama 'img' en la base de datos
+    } else {
+      console.log('No se encontró el producto en la base de datos');
+      return null;
+    }
+  } catch (error) {
+    console.error('Error al obtener la imagen del producto:', error.message);
+    return null;
+  }
+}
+
